@@ -37,10 +37,10 @@ const Navbar = () => {
 
             <div className="min-w-0 leading-tight">
               <h1 className="truncate text-[22px] text-base font-semibold text-black-900">
-                বাজার দর
+               বাজার দর 
               </h1>
               <p className="-mt-1 text-[13px] text-black-500 sm:text-[13px]">
-                {today}
+                <span className="text-[#05893E]">{today}</span>
               </p>
             </div>
           </div>

@@ -10,7 +10,7 @@ const NavBarItems = async () => {
 
   const navLinks = navItems.map((item) => (
         <li key={item.id}> 
-          <div className="border-0 bg-white hover:bg-gray-300 py-1 px-3 rounded-[5px] cursor-pointer">
+          <div className="border-0 bg-white hover:bg-[#dafce7] py-1 px-3 rounded-[5px] cursor-pointer">
             <span className="text-[12px] mr-1">{item.icon}</span>
             <span>{item.nameBn}</span>
           </div>
@@ -21,7 +21,7 @@ const NavBarItems = async () => {
   return (
    
 
-      <div className="max-md:collapse w-full rounded-md max-w-6xl mx-auto px-4 py-0 md:h-[54px]">
+      <div className="max-md:collapse w-full rounded-md max-w-6xl mx-auto px-5 py-0 md:h-[54px]">
         <input id="navbar-1-toggle" className="peer hidden" type="checkbox" />
         <label
           htmlFor="navbar-1-toggle"
@@ -37,8 +37,8 @@ const NavBarItems = async () => {
             </label>
           
           </div>
-          <div className="hidden md:flex p-0 gap-1">
-            <ul className="menu menu-horizontal px-1 p-0">
+          <div className="hidden md:flex p-0">
+            <ul className="menu menu-horizontal px-1 p-0 flex gap-3">
               {navLinks}
             </ul>
           </div>

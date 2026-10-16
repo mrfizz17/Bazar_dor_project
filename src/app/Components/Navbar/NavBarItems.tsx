@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
@@ -9,13 +10,17 @@ const NavBarItems = async () => {
   const navItems = await navdata.json();
 
   const navLinks = navItems.map((item) => (
-        <li key={item.id}> 
+    <Link key={item.id} href={`/Categories/${item.id}`}>
+
+      <li > 
           <div className="border-0 bg-white hover:bg-[#b6f3cd] py-1 px-3 rounded-[5px] cursor-pointer">
             <span className="text-[12px] mr-1">{item.icon}</span>
             <span>{item.nameBn}</span>
           </div>
         
         </li>
+    </Link>
+        
       ))
 
   return (

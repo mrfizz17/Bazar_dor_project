@@ -10,7 +10,7 @@ const NavBarItems = async () => {
 
   const navLinks = navItems.map((item) => (
         <li key={item.id}> 
-          <div className="border-0 bg-white hover:bg-[#dafce7] py-1 px-3 rounded-[5px] cursor-pointer">
+          <div className="border-0 bg-white hover:bg-[#b6f3cd] py-1 px-3 rounded-[5px] cursor-pointer">
             <span className="text-[12px] mr-1">{item.icon}</span>
             <span>{item.nameBn}</span>
           </div>

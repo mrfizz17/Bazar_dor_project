@@ -11,7 +11,7 @@ const ProductCard = ({ item }) => {
           : "পিস";
 
   return (
-    <div className=" rounded-2xl border border-white hover:border-green-600 bg-white p-5 shadow-sm">
+    <div className="cursor-pointer rounded-2xl border border-white transition-colors duration-300 ease-in-out hover:border-green-600  bg-white p-5 shadow-sm">
       <div className="flex items-center gap-4">
         <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gray-100">
           <span className="text-2xl">{item.image}</span>

@@ -12,7 +12,7 @@ const Marque = async () => {
   
 
   return (
-    <Marquee className="bg-white mt-0.5" speed={150}>
+    <Marquee className="bg-white mt-0.5 " speed={150} >
         <div className="flex gap-10 mt-2 h-[40px]">
             {data.map((item) => {
 

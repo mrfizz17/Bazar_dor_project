@@ -19,7 +19,7 @@ const IncreaseProduct = async ({data}) => {
       <p className="text-[35px] font-medium">
         <span className="text-red-600 text-[30px]">▲</span> আজ দাম বেড়েছে
       </p>
-      <div className="grid grid-cols-3 mt-5 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-5 gap-5">
         {topSix.map((item) => {
           return <ProductCard item={item} key={item.id} />;
         })}

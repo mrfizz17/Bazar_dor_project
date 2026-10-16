@@ -4,6 +4,7 @@ import IncreaseProduct from "./Components/DailyUpdate/IncreaseProduct";
 import Decreseproduct from "./Components/DailyUpdate/Decreseproduct";
 import AllProduct from "./Components/AllProduct/AllProduct";
 
+
 export default async function Home() {
     const res = await fetch(
       "https://openapi.programming-hero.com/api/bazardor/products",

@@ -17,7 +17,7 @@ const AllProduct = ({data}) => {
   }
 
   return (
-    <div className="mt-10">
+    <div id="সবপণ্য" className="mt-10">
       <div className="flex justify-between">
         <div>
           <p className="text-[35px] font-medium">সব পণ্য</p>
@@ -37,7 +37,7 @@ const AllProduct = ({data}) => {
         </fieldset>
       </div>
 
-      <div className="grid grid-cols-3 mt-5 gap-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-5 gap-5">
         {data.map((item) => {
           return <ProductCard item={item} key={item.id} />;
         })}

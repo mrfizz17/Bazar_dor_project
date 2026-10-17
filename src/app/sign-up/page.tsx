@@ -1,5 +1,6 @@
 "use client";
 
+import { authClient, signUp } from "../../lib/auth-client";
 import {
   Button,
   FieldError,
@@ -9,21 +10,47 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
-import React, { FormEvent } from "react";
+import React, { FormEvent, SubmitEventHandler, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { useRouter } from "next/navigation";
 
 const SignUpPage = () => {
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    const router = useRouter();
+    const [isSubmit,setIsSubmit]=useState(false);
+
+    
+  async function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
+
     e.preventDefault();
+    setIsSubmit(true);
     const formData = new FormData(e.currentTarget);
-    const data = Object.fromEntries(formData);
+    const data = Object.fromEntries(formData.entries());
     console.log("Form data:", data);
+
+    const {data:userData,error}= await signUp.email({
+        name:data.name as string,
+        email:data.email as string,
+        password:data.password as string
+    });
+
+    setIsSubmit(false);
+
+    if(error){
+        alert(`Sign up failed  ${error.message}`);
+        return;
+    }
+
+     router.push("/");
+
+     alert(`Sign up Success`);
+
+
   }
 
   return (
     <div>
-      <p className="font-bold text-4xl mb-2 text-center">
+      <p className="font-bold text-3xl md:text-4xl mb-2 text-center">
         অ্যাকাউন্ট তৈরি করুন
       </p>
       <p className="font-normal text-1xl text-gray-500 mb-3 text-center">
@@ -31,7 +58,7 @@ const SignUpPage = () => {
       </p>
 
 
-      <div className="flex justify-center flex-col items-center  bg-white p-5 rounded-2xl max-w-[430px] mx-auto">
+      <div className="flex justify-center flex-col items-center  bg-white py-6 px-7 rounded-2xl max-w-[430px] mx-auto">
         <Form
           className="flex flex-col gap-4 w-full"
           render={(props) => <form {...props} data-custom="foo" />}
@@ -124,9 +151,10 @@ const SignUpPage = () => {
 
           <Button
             type="submit"
-            className="w-full bg-green-600 text-white text-[18px] font-medium py-3 rounded-[8px] cursor-pointer"
+            isDisabled={isSubmit}
+            className={`w-full  text-white text-[18px] font-medium py-3 rounded-[8px] cursor-pointer ${isSubmit ? 'bg-gray-500' : 'bg-green-600' }`}
           >
-            সাইন আপ
+            {isSubmit ? <p className="flex gap-5"><span className="loading loading-spinner loading-md"></span>অপেক্ষা করুন</p>: 'সাইন আপ' }
           </Button>
 
           <div className="divider text-gray-600">অথবা</div>

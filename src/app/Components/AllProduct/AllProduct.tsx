@@ -1,8 +1,9 @@
 "use client"
 import { useState } from "react";
 import ProductCard from "../ProductCard";
+import { IProducts } from "@/Types/types";
 
-const AllProduct = ({data}) => {
+const AllProduct = ({data}:{data:IProducts[]}) => {
     const [sortType,setSortType]= useState("default");
     
 

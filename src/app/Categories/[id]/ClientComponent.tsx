@@ -1,9 +1,10 @@
 "use client"
 
 import ProductCard from "@/app/Components/ProductCard";
+import { IProducts } from "@/Types/types";
 import React, { useState } from "react";
 
-const ClientComponent = ({data}) => {
+const ClientComponent = ({data}:{data:IProducts[]}) => {
   const [sortType, setSortType] = useState("default");
 
   

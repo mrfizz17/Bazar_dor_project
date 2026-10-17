@@ -19,11 +19,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       data-theme="light"
       className={`${NotoSans.className} h-full antialiased`}
     >
-      <body className="bg-[#F0F5F0]">
+      <body className="bg-[#F0F5F0] min-h-screen flex flex-col">
         <Navbar />
         <Marquee />
         <div className="h-px w-full bg-gray-100" />
-        <div className="max-w-6xl mx-auto px-5 mt-7 mb-7 ">
+        <div className="max-w-6xl w-full mx-auto px-5 mt-7 mb-7 flex-1">
         {children}
 
         </div>

@@ -1,7 +1,8 @@
 import React from "react";
 import ProductCard from "../ProductCard";
+import { IProducts } from "@/Types/types";
 
-const IncreaseProduct = async ({data}) => {
+const IncreaseProduct = async ({data}:{data:IProducts[]}) => {
 
 
   const IncreseItem = data.filter((item) => {

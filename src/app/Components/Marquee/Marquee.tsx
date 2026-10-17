@@ -1,13 +1,14 @@
 import React from "react";
 import { IoCaretDownSharp, IoCaretUpSharp } from "react-icons/io5";
 import Marquee from "react-fast-marquee";
+import { IProducts } from "@/Types/types";
 
 const Marque = async () => {
   const res = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/products",
   );
 
-  const data = await res.json();
+  const data:IProducts[] = await res.json();
 
   
 

@@ -1,14 +1,15 @@
 import React from "react";
 import ProductCard from "../ProductCard";
+import { IProducts } from "@/Types/types";
 
-const Decreseproduct = async ({data}) => {
+const Decreseproduct = async ({data}:{data:IProducts[]}) => {
   
 
-  const IncreseItem = data.filter((item) => {
+  const IncreseItem:IProducts[] = data.filter((item) => {
     return item.change.dir === "down";
   });
 
-  const topSix = IncreseItem.sort((a, b) => b.change.pct - a.change.pct).slice(
+  const topSix:IProducts[] = IncreseItem.sort((a, b) => b.change.pct - a.change.pct).slice(
     0,
     6,
   );

@@ -2,12 +2,19 @@ import Link from "next/link";
 import React from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 
+interface Inavitems{
+  id:string,
+  slug:string,
+  nameBn:string,
+  icon:string
+}
+
 const NavBarItems = async () => {
   const navdata = await fetch(
     "https://openapi.programming-hero.com/api/bazardor/categories",
   );
 
-  const navItems = await navdata.json();
+  const navItems:Inavitems[] = await navdata.json();
 
   const navLinks = navItems.map((item) => (
     <Link key={item.id} href={`/Categories/${item.id}`}>

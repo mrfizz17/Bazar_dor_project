@@ -1,7 +1,8 @@
 
+import { IProducts } from "@/Types/types";
 import React from "react";
 
-const ProductCard = ({ item }) => {
+const ProductCard = ({ item }:{item:IProducts}) => {
   const unit =
     item.unit === "kg"
       ? "কেজি"

@@ -19,7 +19,7 @@ const AllProduct = ({data}:{data:IProducts[]}) => {
 
   return (
     <div id="সবপণ্য" className="mt-10">
-      <div className="flex justify-between">
+      <div className="flex flex-col md:flex-row gap-3 md:justify-between">
         <div>
           <p className="text-[35px] font-medium">সব পণ্য</p>
           <p className="text-gray-500 -mt-2">মোট {(data.length).toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>

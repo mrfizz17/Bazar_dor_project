@@ -3,7 +3,14 @@ import Link from "next/link";
 import NavBarItems from "./NavBarItems";
 
 
-const Navbar = () => {
+interface Inavitems{
+  id:string,
+  slug:string,
+  nameBn:string,
+  icon:string
+}
+
+const Navbar = async() => {
 
   const date = new Date ();
 
@@ -13,6 +20,12 @@ const Navbar = () => {
     month:"long",
     year:"numeric",
   });
+
+  const navdata = await fetch(
+    "https://openapi.programming-hero.com/api/bazardor/categories",
+  );
+
+  const navItems:Inavitems[] = await navdata.json();
 
   
   return (
@@ -36,18 +49,18 @@ const Navbar = () => {
             </Link>
 
             <div className="min-w-0 leading-tight">
-              <h1 className="truncate text-[22px] text-base font-semibold text-black-900">
+              <h1 className="truncate text-[18px] md:text-[22px] text-base font-semibold text-black-900">
                বাজার দর 
               </h1>
-              <p className="-mt-1 text-[13px] text-black-500 sm:text-[13px]">
+              <p className=" text-[10px] md:text-[13px] text-black-500 sm:text-[13px]">
                 <span className="text-[#05893E]">{today}</span>
               </p>
             </div>
           </div>
 
           <div className="flex gap-4">
-            <button className="btn border-0 px-5 py-6  bg-white hover:bg-gray-200 text-[18px] font-medium">সাইন ইন</button>
-            <button className="btn bg-[#05893E] text-[18px] text-white py-6 px-5 font-medium rounded-[11px] shadow-[0_4px_4px_#05893E4D]"> সাইন আপ</button>
+            <button className="btn border-0 px-2 py-3 text-[14px] md:px-5 md:py-6  bg-white hover:bg-gray-200 md:text-[18px] font-medium">সাইন ইন</button>
+            <button className="btn bg-[#05893E] px-2 py-3 text-[14px] md:text-[18px] text-white md:py-6 md:px-5 font-medium rounded-[11px] shadow-[0_4px_4px_#05893E4D]"> সাইন আপ</button>
 
           </div>
 
@@ -61,7 +74,7 @@ const Navbar = () => {
 
        <div className="h-px w-full bg-gray-100" />
 
-        <NavBarItems />
+        <NavBarItems navItems={navItems}/>
 
    
     </header>

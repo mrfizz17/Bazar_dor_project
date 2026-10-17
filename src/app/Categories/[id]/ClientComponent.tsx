@@ -28,7 +28,7 @@ const ClientComponent = ({data}:{data:IProducts[]}) => {
         </div>
       </div>
 
-      <div className="flex justify-between items-center">
+      <div className="flex md:justify-between md:items-center flex-col md:flex-row gap-3">
         <div>
           <p className="text-gray-500 text-[18px]">
             মোট {data.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে

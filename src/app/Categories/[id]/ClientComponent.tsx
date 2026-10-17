@@ -28,17 +28,17 @@ const ClientComponent = ({data}:{data:IProducts[]}) => {
         </div>
       </div>
 
-      <div className="flex md:justify-between md:items-center flex-col md:flex-row gap-3">
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-[1fr_1fr] md:items-center md:justify-between">
         <div>
           <p className="text-gray-500 text-[18px]">
             মোট {data.length.toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে
           </p>
         </div>
 
-        <fieldset className="fieldset flex gap-5 items-center">
+        <fieldset className="fieldset flex flex-row justify-end gap-4 items-center ">
           <p className="text-2xl font-normal text-gray-700">সাজান</p>
           <select
-            className="select  border-green-500 outline-0"
+            className="select  border-green-500 outline-0 justify-center items-start"
             onChange={(e) => {
               setSortType(e.target.value);
             }}
@@ -49,6 +49,8 @@ const ClientComponent = ({data}:{data:IProducts[]}) => {
           </select>
         </fieldset>
       </div>
+
+
 
       <div className="grid md:grid-cols-2 lg:grid-cols-3 mt-5 gap-5">
         {data.map((item) => {

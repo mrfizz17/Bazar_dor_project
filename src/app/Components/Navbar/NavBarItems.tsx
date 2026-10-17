@@ -1,4 +1,5 @@
 "use client"
+
 import Link from "next/link";
 import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -13,6 +14,8 @@ interface Inavitems{
 
 
 const NavBarItems =({navItems}:{navItems:Inavitems[]}) => {
+
+  
   
   const [activeId,setActiveId]=useState("");
   

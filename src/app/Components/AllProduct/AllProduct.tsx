@@ -19,15 +19,15 @@ const AllProduct = ({data}:{data:IProducts[]}) => {
 
   return (
     <div id="সবপণ্য" className="mt-10">
-      <div className="flex flex-col md:flex-row gap-3 md:justify-between">
+      <div className="flex flex-col md:flex-row gap-3">
         <div>
           <p className="text-[35px] font-medium">সব পণ্য</p>
           <p className="text-gray-500 -mt-2">মোট {(data.length).toLocaleString("bn-BD")}টি পণ্য দেখানো হচ্ছে</p>
         </div>
 
-        <fieldset className="fieldset flex gap-5 items-center">
+        <fieldset className="fieldset flex flex-row justify-end gap-4 items-center ">
           <p className="text-2xl font-normal text-gray-700">সাজান</p>
-          <select className="select  border-green-500 outline-0" onChange={(e)=>{
+          <select className="select  border-green-500 outline-0 justify-center items-start" onChange={(e)=>{
             setSortType(e.target.value);
           }}> 
             <option value="default">ডিফল্ট</option>

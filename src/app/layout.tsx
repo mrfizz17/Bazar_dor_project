@@ -17,7 +17,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html
       lang="en"
       data-theme="light"
-      className={`${NotoSans.className} h-full antialiased`}
+      className={`${NotoSans.className} h-full antialiased scroll-smooth`}
+      data-scroll-behavior="smooth"
+      
     >
       <body className="bg-[#F0F5F0] min-h-screen flex flex-col">
         <Navbar />

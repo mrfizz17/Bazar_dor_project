@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import NavBarItems from "./NavBarItems";
+import { useSession } from "@/lib/auth-client";
+import SignButton from "./SignButton";
 
 interface Inavitems {
   id: string;
@@ -11,6 +13,7 @@ interface Inavitems {
 
 const Navbar = async () => {
   const date = new Date();
+
 
   const today = date.toLocaleDateString("bn-BD", {
     weekday: "long",
@@ -55,19 +58,9 @@ const Navbar = async () => {
             </div>
           </div>
 
-          <div className="flex gap-4">
-            <Link href={"/sign-in"}>
-              <button className="btn border-0 px-2 py-3 text-[14px] md:px-5 md:py-6  bg-white hover:bg-gray-200 md:text-[18px] font-medium">
-                সাইন ইন
-              </button>
-            </Link>
-            <Link href={"/sign-up"}>
-              <button className="btn bg-[#05893E] px-2 py-3 text-[14px] md:text-[18px] text-white md:py-6 md:px-5 font-medium rounded-[11px] shadow-[0_4px_4px_#05893E4D]">
-                {" "}
-                সাইন আপ
-              </button>
-            </Link>
-          </div>
+          <SignButton />
+
+          
         </div>
       </div>
 

@@ -4,8 +4,8 @@ import dns from "node:dns";
 import { betterAuth } from "better-auth";
 import { MongoClient } from "mongodb";
 import { mongodbAdapter } from "@better-auth/mongo-adapter";
-dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
+dns.setServers(["8.8.8.8", "8.8.4.4"]);
 
 
 

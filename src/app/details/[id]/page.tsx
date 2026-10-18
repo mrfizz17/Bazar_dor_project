@@ -1,6 +1,7 @@
 import { Iparams, IProducts } from "@/Types/types";
 import React from "react";
 import SummaryCard from "./SummaryCard";
+import Link from "next/link";
 
 
 
@@ -25,7 +26,7 @@ const DetailsPage = async ({params}:Iparams) => {
   const maxPrice = Math.max(...data.markets.map((m)=>m.max));
   const minPrice = Math.min(...data.markets.map((m)=>m.min));
   const average =  data.markets.reduce((acc,elem)=>{
-    return acc+(elem.min+elem.max)
+    return acc+((elem.min+elem.max)/2)
   },0)/ data.markets.length;
 
   
@@ -55,7 +56,7 @@ const DetailsPage = async ({params}:Iparams) => {
           </div>
         </div>
 
-        <div className="flex shrink-0 flex-col md:items-center justify-center rounded-2xl bg-[#f0f5f0] px-8 py-2">
+        <div className="flex shrink-0 flex-col md:items-center justify-center rounded-2xl bg-[#f0f5f0] px-4 md:px-8 py-2">
           <span className="text-md text-[#536259]">আজকের দাম</span>
 
           <strong className="text-[35px] ">
@@ -178,6 +179,12 @@ const DetailsPage = async ({params}:Iparams) => {
           </div>
         </div>
       </section>
+
+      <Link href={`/Categories/${data.category}`}>
+      
+        <button className="btn text-[18px] bg-green-700 text-white mt-5 px-10">{`সব ${data.categoryNameBn}`}</button>
+      
+      </Link>
 
       
     </div>

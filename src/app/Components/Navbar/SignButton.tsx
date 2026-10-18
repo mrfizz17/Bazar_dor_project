@@ -4,6 +4,8 @@ import { useSession ,signOut} from "@/lib/auth-client";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { FaUser } from "react-icons/fa";
+import { PiSignOutBold } from "react-icons/pi";
 
 const SignButton = () => {
   const router = useRouter();
@@ -40,19 +42,24 @@ const SignButton = () => {
           <div
             tabIndex={0}
             role="button"
-            className="btn bg-green-600 m-1 text-[20px] text-white rounded-3xl w-12 h-12"
+            className="btn py-6 bg-green-600 m-1 text-[20px] text-white rounded-[6px]"
           >
-            {session?.data?.user.name.slice(0, 1)}
+            <p className="bg-white w-9 h-9 text-[22px]  rounded-3xl text-green-600 flex justify-center items-center">{session?.data?.user.name.slice(0, 1)}</p>
+            <p className="text-[12px]">{session?.data?.user.name}</p>
           </div>
           <ul
             tabIndex={-1}
-            className="dropdown-content menu bg-[#05893E] rounded-box z-1 w-52 p-2 shadow-sm text-white"
-          >
-            <li className="cursor-pointer  border-b-1 ">
-              <Link  href={"/profile"}>Profile</Link>
+            className="dropdown-content menu bg-white rounded-box z-1 w-60 p-2 shadow-md font-bold text-[#05893E] mt-1"
+          > 
+            <div className="text-[12px] text-gray-500 font-normal">
+                <p>{session?.data?.user.name}</p>
+                <p>{session?.data?.user.email}</p>
+            </div>
+            <li className="cursor-pointer border-b-1">
+              <Link  href={"/profile"}><FaUser />PROFILE</Link>
             </li>
-            <li className="cursor-pointer" onClick={handleSignOut}>
-              <a>Sign Out</a>
+            <li className="cursor-pointer text-red-500 font-semibold" onClick={handleSignOut}>
+              <a><PiSignOutBold /> SIGN OUT</a>
             </li>
           </ul>
         </div>

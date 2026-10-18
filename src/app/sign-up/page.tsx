@@ -1,6 +1,6 @@
 "use client";
 
-import { authClient, signUp } from "../../lib/auth-client";
+import { authClient, signIn, signUp } from "../../lib/auth-client";
 import {
   Button,
   FieldError,
@@ -46,6 +46,34 @@ const SignUpPage = () => {
      alert(`Sign up Success`);
 
 
+  }
+
+  const googleSignUp=async()=>{
+
+    setIsSubmit(true);
+    const {data:userData,error}= await signIn.social({
+       provider:"google",
+    });
+
+    setIsSubmit(false);
+
+    if(error){
+      alert(`Google sign in ${error.message}`);
+      return;
+    }
+    alert('Google sign in Succesfull')
+  }
+
+   const githubSignUp=async()=>{
+
+    setIsSubmit(true);
+    const {data:userData,error}= await signIn.social({
+       provider:"github",
+    });
+
+    setIsSubmit(false);
+
+    
   }
 
   return (
@@ -161,13 +189,15 @@ const SignUpPage = () => {
         </Form>
 
         <div className="flex gap-2 w-full">
-          <button className="btn btn-outline cursor-pointer text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-3">
+          <button className="btn btn-outline cursor-pointer text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-3"
+           onClick={googleSignUp}
+          >
             <FcGoogle />
             <span className="text-[12px]">
               Google <br /> দিয়ে চালিয়ে যান
             </span>
           </button>
-          <button className="btn btn-outline text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-4">
+          <button onClick={githubSignUp} className="btn btn-outline text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-4">
             <FaGithub />
             <span className="text-[12px]">
               Github <br /> দিয়ে চালিয়ে যান

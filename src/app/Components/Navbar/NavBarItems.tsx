@@ -30,7 +30,7 @@ const NavBarItems =({navItems}:{navItems:Inavitems[]}) => {
       <li > 
           <div className={`border-0 ${activeId===item.id? 'bg-green-600 text-white hover:bg-green-600' : 'bg-white'}  hover:bg-[#d9f1e2] py-1 px-3 rounded-[5px] cursor-pointer`}>
             <span className="text-[12px] mr-1">{item.icon}</span>
-            <span>{item.nameBn}</span>
+            <span className="text-[18px]">{item.nameBn}</span>
           </div>
         
         </li>

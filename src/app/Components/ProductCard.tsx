@@ -1,8 +1,8 @@
-
 import { IProducts } from "@/Types/types";
+import Link from "next/link";
 import React from "react";
 
-const ProductCard = ({ item }:{item:IProducts}) => {
+const ProductCard = ({ item }: { item: IProducts }) => {
   const unit =
     item.unit === "kg"
       ? "কেজি"
@@ -13,7 +13,7 @@ const ProductCard = ({ item }:{item:IProducts}) => {
           : "পিস";
 
   return (
-    
+    <Link href={`/details/${item.id}`}>
       <div className="cursor-pointer rounded-2xl border border-white transition-colors duration-300 ease-in-out hover:border-green-600  bg-white p-5 shadow-sm">
         <div className="flex items-center gap-4">
           <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-xl bg-gray-100">
@@ -50,6 +50,7 @@ const ProductCard = ({ item }:{item:IProducts}) => {
           )}
         </div>
       </div>
+    </Link>
   );
 };
 

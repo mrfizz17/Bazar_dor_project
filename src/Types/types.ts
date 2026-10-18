@@ -24,3 +24,10 @@ export interface IProducts {
   };
   markets: Imarkets[];
 }
+
+
+export interface Iparams {
+  params : {
+    id:string;
+  }
+}

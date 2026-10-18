@@ -1,11 +1,6 @@
 
-interface Iparams {
-  params : {
-    id:string;
-  }
-}
 
-
+import { Iparams } from "@/Types/types";
 import ClientComponent from "./ClientComponent";
 
 const page = async ({ params }:Iparams) => {

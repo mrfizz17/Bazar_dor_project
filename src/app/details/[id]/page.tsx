@@ -43,6 +43,13 @@ const DetailsPage = async ({params}:Iparams) => {
 
   return (
     <div>
+      <div className="text-[18px] mb-5">
+        <Link href={"/"} className="hover:underline">হোম</Link>
+        <span className="ml-2 mr-2">{"  >  "}</span> 
+        <Link href={`/Categories//${data.category}`} className="hover:underline">{data.categoryNameBn}</Link>
+        <span className="ml-2 mr-2">{"  >  "}</span> 
+        <Link href={""} className="hover:underline">{data.nameBn}</Link>
+      </div>
       <section className="mb-[22px] flex flex-col md:flex-row min-h-[150px] md:items-center justify-between gap-6 rounded-2xl border border-[#dce5dd] bg-[#fafcfb] px-[18px] py-4">
         <div className="flex min-w-0 items-center gap-5">
           <div className="grid h-[80px] w-[80px] shrink-0 place-items-center rounded-[15px] bg-[#f0f5f0] text-[40px]">

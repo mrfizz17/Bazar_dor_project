@@ -54,8 +54,8 @@ const ProfilePage = () => {
         </p>
       </div>
 
-      <div className=" bg-white px-4 md:px-10  py-5 shadow-md rounded-2xl">
-        <div className="flex gap-6  items-center ">
+      <div className=" bg-white px-5 md:px-10  py-5 shadow-md rounded-2xl">
+        <div className="flex flex-col gap-6  md:items-center md:flex-row">
           <p className=" bg-green-600 flex justify-center items-center w-20 h-20 rounded-[50%] text-white text-4xl">
             {session?.data?.user.name.slice(0, 1).toUpperCase()}
           </p>
@@ -70,7 +70,7 @@ const ProfilePage = () => {
             </p>
           </div>
 
-          <div className="flex-1 text-end">
+          <div className="flex-1 md:text-end">
             <button className="btn bg-red-600 text-white py-6 px-10 mt-5 " onClick={handleSignOut}>
               Sign out
             </button>
@@ -78,7 +78,7 @@ const ProfilePage = () => {
         </div>
       </div>
 
-      <div className=" bg-white px-4 md:px-10  py-5 shadow-md rounded-2xl mt-5">
+      <div className=" bg-white px-5 md:px-10  py-5 shadow-md rounded-2xl mt-5">
         <p className="text-2xl mb-1 font-semibold text-gray-700">
           নাম হালনাগাদ করুন
         </p>

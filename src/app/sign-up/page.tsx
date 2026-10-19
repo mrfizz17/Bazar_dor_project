@@ -25,7 +25,7 @@ const SignUpPage = () => {
     setIsSubmit(true);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
-    console.log("Form data:", data);
+
 
     const { data: userData, error } = await signUp.email({
       name: data.name as string,

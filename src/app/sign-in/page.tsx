@@ -61,7 +61,6 @@ const SignInPage = () => {
       alert(`Google sign in ${error.message}`);
       return;
     }
-    alert("Google sign in Succesfull");
   };
 
   const githubSignIn = async () => {

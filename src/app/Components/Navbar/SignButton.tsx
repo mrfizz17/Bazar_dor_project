@@ -48,15 +48,15 @@ const SignButton = () => {
             role="button"
             className="btn py-6 bg-green-600 m-1 text-[20px] text-white rounded-[6px]"
           >
-            <p className="bg-white w-9 h-9 mr-1 text-[22px]  rounded-[50%] text-green-600 flex justify-center items-center">{session?.data?.user.name.slice(0, 1)}</p>
-            <p className="text-[12px] flex gap-4">{session?.data?.user.name.split(" ")[0]}  <span>▼ </span></p>
+            <p className="bg-white w-9 h-9 mr-1 text-[22px]  rounded-[50%] text-green-600 flex justify-center items-center">{session?.data?.user.name.slice(0, 1).toUpperCase()}</p>
+            <p className="text-[14px] flex gap-2">{session?.data?.user.name.split(" ")[0]}  <span>▼ </span></p>
           </div>
           <ul
             tabIndex={-1}
-            className="dropdown-content menu bg-white rounded-box z-1 w-60 p-2 shadow-md font-bold text-[#05893E] mt-1"
+            className="dropdown-content menu bg-white rounded-box z-1 w-60 p-3 shadow-md font-bold text-[#05893E] mt-1"
           > 
             <div className="text-[12px] text-gray-500 font-normal">
-                <p>{session?.data?.user.name}</p>
+                <p className="text-black font-medium text-[15px]">{session?.data?.user.name}</p>
                 <p>{session?.data?.user.email}</p>
             </div>
             <li className="cursor-pointer border-b-1">

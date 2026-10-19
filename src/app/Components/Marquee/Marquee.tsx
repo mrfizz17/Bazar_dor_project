@@ -20,7 +20,7 @@ const Marque = async () => {
                 const unit = item.unit ==="kg" ? "কেজি" : item.unit==="litre"? "লিটার"  : item.unit==="dozen" ? "ডজন" : "পিস" ;
         return(
             <div key={item.id} className="flex  items-center font-normal ml-4">
-            {item.image} {item.nameBn} <span className="text-gray-600 ml-2 mr-3">{((item.today).toLocaleString("bn-BD"))}/{unit}</span>  {item.change.dir==="up"?  <span className="text-red-600">▲</span>: <span className="text-green-600">▼</span> } {Math.abs(item.change.pct)}% 
+            {item.image} {item.nameBn} <span className="text-gray-600 ml-2 mr-3">{((item.today).toLocaleString("bn-BD"))}/{unit}</span>  {item.change.dir==="up"?  <span className="text-red-600">▲</span>: <span className="text-green-600">▼</span> } {Math.abs(item.change.pct).toLocaleString("bn-BD")}% 
         </div>
         );
         

@@ -4,6 +4,7 @@ import { Form, Input, Label, TextField } from "@heroui/react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
+import { PiSignOutBold } from "react-icons/pi";
 import { toast } from "sonner";
 
 const ProfilePage = () => {
@@ -71,8 +72,8 @@ const ProfilePage = () => {
           </div>
 
           <div className="flex-1 md:text-end">
-            <button className="btn bg-red-600 text-white py-6 px-10 mt-5 " onClick={handleSignOut}>
-              Sign out
+            <button className="btn bg-white text-red-600 hover:bg-red-600 hover:text-white py-6 px-10 mt-5 text-[18px]" onClick={handleSignOut}>
+              <PiSignOutBold />Sign out
             </button>
           </div>
         </div>

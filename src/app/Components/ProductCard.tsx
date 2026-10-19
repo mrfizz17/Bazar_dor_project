@@ -40,12 +40,12 @@ const ProductCard = ({ item }: { item: IProducts }) => {
           {item.change.dir === "up" ? (
             <div className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-red-600">
               <span>▲</span>
-              <span>{Math.abs(item.change.pct)}%</span>
+              <span>{Math.abs(item.change.pct).toLocaleString("bn-BD")}%</span>
             </div>
           ) : (
             <div className="flex items-center gap-1 rounded-full bg-gray-100 px-3 py-1 text-xs font-medium text-green-600">
               <span>▼</span>
-              <span>{Math.abs(item.change.pct)}%</span>
+              <span>{Math.abs(item.change.pct).toLocaleString("bn-BD")}%</span>
             </div>
           )}
         </div>

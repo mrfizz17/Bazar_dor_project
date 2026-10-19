@@ -66,7 +66,7 @@ const DetailsPage = async ({params}:Iparams) => {
             <p className="text-[14px] md:text-[15px] text-gray-500">
               গতকালের তুলনায় আজ দাম
                <span className="font-semibold">{data.change.dir==='up' ? " বেড়েছে" : " কমেছে"}{" "}</span>
-              {Math.abs(data.change.pct)}%
+              {Math.abs(data.change.pct).toLocaleString("bn-BD")}%
             </p>
           </div>
         </div>
@@ -85,7 +85,7 @@ const DetailsPage = async ({params}:Iparams) => {
               data.change.dir==='up' ? "text-red-500" : "text-green-600"
             }`}
           >
-            {data.change.dir==='up' ? "▲" : "▼"} {Math.abs(data.change.pct)}%
+            {data.change.dir==='up' ? "▲" : "▼"} {Math.abs(data.change.pct).toLocaleString("bn-BD")}%
           </span>
         </div>
       </section>

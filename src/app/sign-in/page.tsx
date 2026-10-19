@@ -3,7 +3,6 @@
 import { signIn } from "@/lib/auth-client";
 import {
   Button,
-  Description,
   FieldError,
   Form,
   Input,
@@ -11,12 +10,16 @@ import {
   TextField,
 } from "@heroui/react";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useRouter } from "next/navigation";
+import React, { useReducer, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "sonner";
 
 const SignInPage = () => {
   const [isSubmit, setIsSubmit] = useState(false);
+
+  const router = useRouter();
 
   const handleSignIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,17 +31,22 @@ const SignInPage = () => {
     const { data: signinData, error } = await signIn.email({
       email: data.email as string,
       password: data.password as string,
-      callbackURL: "/",
     });
 
     setIsSubmit(false);
 
     if (error) {
-      alert(`Login failed ${error.message}`);
+      toast.error(`Login failed ${error.message} Try again`,{
+        className: "!bg-red-600 !text-white !text-[15px]" 
+      });
       return;
     }
 
-    alert("Login succesfull");
+    toast.success("Login succesfull , Welcome Back", {
+      className: "!bg-green-600 !text-white !border-green-700 !text-[15px]",
+    });
+
+    router.push("/");
   };
 
   const googleSignIn = async () => {
@@ -56,17 +64,14 @@ const SignInPage = () => {
     alert("Google sign in Succesfull");
   };
 
-   const githubSignIn=async()=>{
-  
-      setIsSubmit(true);
-      const {data:userData,error}= await signIn.social({
-         provider:"github",
-      });
-  
-      setIsSubmit(false);
-  
-     
-    }
+  const githubSignIn = async () => {
+    setIsSubmit(true);
+    const { data: userData, error } = await signIn.social({
+      provider: "github",
+    });
+
+    setIsSubmit(false);
+  };
 
   return (
     <div>
@@ -145,16 +150,42 @@ const SignInPage = () => {
         </Form>
 
         <div className="flex gap-2 w-full">
-          <button onClick={googleSignIn} className="btn btn-outline cursor-pointer text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-3">
+          <button
+            onClick={googleSignIn}
+            disabled={isSubmit}
+            className="btn btn-outline cursor-pointer text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-3"
+          >
             <FcGoogle />
             <span className="text-[12px]">
-              Google <br /> দিয়ে চালিয়ে যান
+              {isSubmit ? (
+                <p className="flex gap-5">
+                  <span className="loading loading-spinner loading-md"></span>
+                  অপেক্ষা করুন
+                </p>
+              ) : (
+                <p>
+                  Google <br /> দিয়ে চালিয়ে যান
+                </p>
+              )}
             </span>
           </button>
-          <button onClick={githubSignIn} className="btn btn-outline text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-4">
+          <button
+            onClick={githubSignIn}
+            disabled={isSubmit}
+            className="btn btn-outline text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-4"
+          >
             <FaGithub />
             <span className="text-[12px]">
-              Github <br /> দিয়ে চালিয়ে যান
+              {isSubmit ? (
+                <p className="flex gap-5">
+                  <span className="loading loading-spinner loading-md"></span>
+                  অপেক্ষা করুন
+                </p>
+              ) : (
+                <p>
+                  Github <br /> দিয়ে চালিয়ে যান
+                </p>
+              )}
             </span>
           </button>
         </div>

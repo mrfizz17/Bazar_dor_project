@@ -2,6 +2,7 @@ import { Iparams, IProducts } from "@/Types/types";
 import React from "react";
 import SummaryCard from "./SummaryCard";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 
 
@@ -10,8 +11,15 @@ const DetailsPage = async ({params}:Iparams) => {
   const {id} = await params;
 
   const res = await fetch(`https://openapi.programming-hero.com/api/bazardor/products/${id}`);
+  if(res.status===404){
+    notFound();
+  }
 
   const data:IProducts=await res.json();
+
+  if(!data){
+    notFound();
+  }
 
   const unit =
     data.unit === "kg"

@@ -14,67 +14,58 @@ import React, { FormEvent, SubmitEventHandler, useState } from "react";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const SignUpPage = () => {
-    const router = useRouter();
-    const [isSubmit,setIsSubmit]=useState(false);
+  const router = useRouter();
+  const [isSubmit, setIsSubmit] = useState(false);
 
-    
-  async function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
-
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setIsSubmit(true);
     const formData = new FormData(e.currentTarget);
     const data = Object.fromEntries(formData.entries());
     console.log("Form data:", data);
 
-    const {data:userData,error}= await signUp.email({
-        name:data.name as string,
-        email:data.email as string,
-        password:data.password as string
+    const { data: userData, error } = await signUp.email({
+      name: data.name as string,
+      email: data.email as string,
+      password: data.password as string,
     });
 
     setIsSubmit(false);
 
-    if(error){
-        alert(`Sign up failed  ${error.message}`);
-        return;
-    }
-
-     router.push("/");
-
-     alert(`Sign up Success`);
-
-
-  }
-
-  const googleSignUp=async()=>{
-
-    setIsSubmit(true);
-    const {data:userData,error}= await signIn.social({
-       provider:"google",
-    });
-
-    setIsSubmit(false);
-
-    if(error){
-      alert(`Google sign in ${error.message}`);
+    if (error) {
+      toast.error(`Sign up failed  ${error.message}`,{
+        className: "!bg-red-600 !text-white !text-[15px]"
+      });
       return;
     }
-    alert('Google sign in Succesfull')
+
+    router.push("/sign-in");
+
+    toast.success(`Sign up Success, Now login with email and password`,{
+        className: "!bg-green-600 !text-white !text-[15px]"
+     });
   }
 
-   const githubSignUp=async()=>{
-
+  const googleSignUp = async () => {
     setIsSubmit(true);
-    const {data:userData,error}= await signIn.social({
-       provider:"github",
+    const { data: userData, error } = await signIn.social({
+      provider: "google",
     });
 
     setIsSubmit(false);
+  };
 
-    
-  }
+  const githubSignUp = async () => {
+    setIsSubmit(true);
+    const { data: userData, error } = await signIn.social({
+      provider: "github",
+    });
+
+    setIsSubmit(false);
+  };
 
   return (
     <div>
@@ -84,7 +75,6 @@ const SignUpPage = () => {
       <p className="font-normal text-1xl text-gray-500 mb-3 text-center">
         বিনা খরচে সাইন আপ করে সব বিস্তারিত দাম দেখুন।
       </p>
-
 
       <div className="flex justify-center flex-col items-center  bg-white py-6 px-7 rounded-2xl max-w-[430px] mx-auto">
         <Form
@@ -180,27 +170,57 @@ const SignUpPage = () => {
           <Button
             type="submit"
             isDisabled={isSubmit}
-            className={`w-full  text-white text-[18px] font-medium py-3 rounded-[8px] cursor-pointer ${isSubmit ? 'bg-gray-500' : 'bg-green-600' }`}
+            className={`w-full  text-white text-[18px] font-medium py-3 rounded-[8px] cursor-pointer ${isSubmit ? "bg-gray-500" : "bg-green-600"}`}
           >
-            {isSubmit ? <p className="flex gap-5"><span className="loading loading-spinner loading-md"></span>অপেক্ষা করুন</p>: 'সাইন আপ' }
+            {isSubmit ? (
+              <p className="flex gap-5">
+                <span className="loading loading-spinner loading-md"></span>
+                অপেক্ষা করুন
+              </p>
+            ) : (
+              "সাইন আপ"
+            )}
           </Button>
 
           <div className="divider text-gray-600">অথবা</div>
         </Form>
 
         <div className="flex gap-2 w-full">
-          <button className="btn btn-outline cursor-pointer text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-3"
-           onClick={googleSignUp}
+          <button
+            className="btn btn-outline cursor-pointer text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-3"
+            onClick={googleSignUp}
+            disabled={isSubmit}
           >
             <FcGoogle />
             <span className="text-[12px]">
-              Google <br /> দিয়ে চালিয়ে যান
+              {isSubmit ? (
+                <p className="flex gap-5">
+                  <span className="loading loading-spinner loading-md"></span>
+                  অপেক্ষা করুন
+                </p>
+              ) : (
+                <p>Google <br /> দিয়ে চালিয়ে যান</p>
+              )}
+             
             </span>
           </button>
-          <button onClick={githubSignUp} className="btn btn-outline text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-4">
+          <button
+            onClick={githubSignUp}
+            disabled={isSubmit}
+
+            className="btn btn-outline text-[25px] flex-1 border-gray-300 py-6 px-0 flex gap-4"
+          >
             <FaGithub />
             <span className="text-[12px]">
-              Github <br /> দিয়ে চালিয়ে যান
+              {isSubmit ? (
+                <p className="flex gap-5">
+                  <span className="loading loading-spinner loading-md"></span>
+                  অপেক্ষা করুন
+                </p>
+              ) : (
+                <p>Github <br /> দিয়ে চালিয়ে যান</p>
+              )}
+              
             </span>
           </button>
         </div>
@@ -213,10 +233,12 @@ const SignUpPage = () => {
         </p>
       </div>
 
-        <p className="text-center mt-2"><Link href="/" className="text-center text-gray-500 underline"> ← হোম পেজে ফিরে যান</Link></p>
-
-
-
+      <p className="text-center mt-2">
+        <Link href="/" className="text-center text-gray-500 underline">
+          {" "}
+          ← হোম পেজে ফিরে যান
+        </Link>
+      </p>
     </div>
   );
 };

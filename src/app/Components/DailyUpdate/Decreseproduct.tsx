@@ -9,7 +9,7 @@ const Decreseproduct = async ({data}:{data:IProducts[]}) => {
     return item.change.dir === "down";
   });
 
-  const topSix:IProducts[] = IncreseItem.sort((a, b) => b.change.pct - a.change.pct).slice(
+  const topSix:IProducts[] = IncreseItem.sort((a, b) => Math.abs(b.change.pct) - Math.abs(a.change.pct)).slice(
     0,
     6,
   );

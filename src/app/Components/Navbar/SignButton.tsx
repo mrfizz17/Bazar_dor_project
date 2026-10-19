@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { FaUser } from "react-icons/fa";
 import { PiSignOutBold } from "react-icons/pi";
+import { toast } from "sonner";
 
 const SignButton = () => {
   const router = useRouter();
@@ -15,6 +16,9 @@ const SignButton = () => {
       fetchOptions: {
         onSuccess: () => {
           router.push("/sign-in");
+          toast.error("Sign out succesfully",{
+            className: "!bg-red-600 !text-white !text-[15px]"
+          })
         },
       },
     });

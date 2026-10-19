@@ -15,6 +15,9 @@ const ClientComponent = ({data}:{data:IProducts[]}) => {
     data=data.sort((a,b)=> b.today-a.today);
     
   }
+
+ 
+
   return (
     <div>
       <div className="bg-white rounded-2xl p-6 flex gap-4 items-center mb-10">
